@@ -31,5 +31,5 @@ aws secretsmanager create-secret --name "/cafe/dbUser" --secret-string "admin"
 aws secretsmanager create-secret --name "/cafe/dbPassword" --secret-string "Lab123#"
 
 echo
-echo "Application Secrets Setup script completed."
+echo "Application Secrets Setup script completed Successfully."
 echo
