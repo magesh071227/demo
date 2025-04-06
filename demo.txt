@@ -2,3 +2,4 @@ Hi
 Hello
 Wellcome to Devops class
 Today topic is Git and GitHub
+we are going to learn how to create repo, and how to create code
