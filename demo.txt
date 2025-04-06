@@ -1,3 +1,4 @@
 Hi 
 Hello
 Wellcome to Devops class
+Today topic is Git and GitHub
