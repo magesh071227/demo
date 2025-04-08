@@ -41,8 +41,8 @@ INSERT INTO product (product_name, description, price, product_group, image_url)
 	, ('Sweet Muffin', 'Banana bread, blueberry, cranberry or apple', 3.00, 1, 'images/Muffins.jpg')
 	, ('Strawberry Blueberry Tart', 'Bursting with the taste and aroma of fresh fruit', 3.50, 1, 'images/Strawberry-Blueberry-Tarts.jpg')
     , ('Strawberry Tart', 'Made with fresh ripe strawberries and a delicious whipped cream', 3.50, 1, 'images/Strawberry-Tarts.jpg')
-	, ('Coffee', 'Freshly-ground black or blended Columbian coffee', 3.00, 2, 'images/Coffee.jpg')
-	, ('Hot Chocolate', 'Rich and creamy, and made with real chocolate', 3.00, 2, 'images/Cup-of-Hot-Chocolate.jpg')
+	, ('Chocolate Coffee', 'Freshly-ground black or blended Columbian coffee', 3.00, 2, 'images/Coffee.jpg')
+	, ('Cold Chocolate', 'Rich and creamy, and made with real chocolate', 3.00, 2, 'images/Cup-of-Hot-Chocolate.jpg')
 	, ('Latte', 'Offered hot or cold and in various delicious flavors', 3.50, 2, 'images/Latte.jpg');
 
 /* Create ORDER table. */
