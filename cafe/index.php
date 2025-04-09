@@ -44,7 +44,7 @@
 			<table>
 				<tr>
 					<td bgcolor="aquamarine">
-						<div class="cursiveText">Frank bakes a rich variety of cookies. Try them all!</div>
+						<div class="cursiveText">Magesh bakes a rich variety of cookies. Try them all!</div>
 						<table>
 							<tr>
 								<td><img src="images/Cookies.jpg" height=auto width="300"></td>
@@ -83,7 +83,7 @@
 			<table>
 				<tr>
 					<td><img src="images/Frank-Martha.jpg" height=auto width="400"></td>
-					<td><p>Frank and Martha have been adding sweetness to their customers' lives since 2020.  Frank's recipes have been passed down from his mother and use simple and fresh ingredients to produce delightful flavors.  Both of them will personally greet you with a welcoming smile when you visit!</p></td>
+					<td><p>Magesh and Martha have been adding sweetness to their customers' lives since 2020.  Frank's recipes have been passed down from his mother and use simple and fresh ingredients to produce delightful flavors.  Both of them will personally greet you with a welcoming smile when you visit!</p></td>
 				</tr>
 			</table>
 			<hr>
