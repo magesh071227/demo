@@ -103,7 +103,7 @@
 		<div>
 			<h3>Hours</h3>
 		</div>
-		<div>Weekdays: 6:00am - 6:00pm<br>Saturday: 7:00am - 7:00pm<br>Closed on Sundays</div>
+		<div>Weekdays: 6:00am - 6:00pm<br>Saturday: 7:00am - 9:00pm<br>Closed on Sundays</div>
 	</div>
 
 	<div id="Copyright" class="center">
