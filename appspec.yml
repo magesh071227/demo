@@ -6,6 +6,6 @@ files:
 
 hooks:
   AfterInstall:
-    - location: deploy-cafe.sh
+    - location: scripts/restart_apache.sh
       timeout: 300
       runas: root
