@@ -2,10 +2,11 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user/deployment
+    destination: /var/www/html/cafe
 
 hooks:
   AfterInstall:
     - location: scripts/restart_apache.sh
       timeout: 300
       runas: root
+
