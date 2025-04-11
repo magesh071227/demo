@@ -39,7 +39,7 @@
 				</tr>
 			</table>
 			<hr>
-			<p>Our caf&eacute; an assortment of delicious and delectable pastries and coffees that will put a smile on your face. From cookies to croissants, tarts and cakes, each treat is especially prepared to excite your tastebuds and brighten your day!</p>
+			<p>Our caf&eacute;delectable pastries and coffees that will put a smile on your face. From cookies to croissants, tarts and cakes, each treat is especially prepared to excite your tastebuds and brighten your day!</p>
 			<br>
 			<table>
 				<tr>
