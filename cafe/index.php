@@ -60,7 +60,7 @@
 						</table>
 					</td>
 					<td bgcolor="aquamarine">
-						<div class="cursiveText">Our tarts are always <br/> a customer favorite!<br><br>
+						<div class="cursiveText">Our Cakes are always <br/> a customer favorite!<br><br>
 					  </div>
 						<table>
 							<tr>
