@@ -39,53 +39,14 @@ $secrets_client = new Aws\SecretsManager\SecretsManagerClient([
   'version' => '2017-10-17'
 ]);
 
-$showServerInfo = "";
-$timeZone = "";
-$currency = "";
-$db_url = "";
-$db_name = "";
-$db_user = "";
-$db_password = "";
+$showServerInfo = "false";
+$timeZone = "America/New_York";
+$currency = "$";
+$db_url = "ec2-3-143-229-84.us-east-2.compute.amazonaws.com";
+$db_name = "cafe_db";
+$db_user = "admin";
+$db_password = "Lab123#";
 
-try {
-  $db_url = $secrets_client->getSecretValue([
-    'SecretId' => '/cafe/dbUrl1'
-  ]);
-  $db_url = $db_url["SecretString"];
-  $db_user = $secrets_client->getSecretValue([
-    'SecretId' => '/cafe/dbUser1'
-  ]);
-  $db_user = $db_user["SecretString"];
-  $db_password = $secrets_client->getSecretValue([
-    'SecretId' => '/cafe/dbPassword1'
-  ]);
-  $db_password = $db_password["SecretString"];
-  $db_name = $secrets_client->getSecretValue([
-    'SecretId' => '/cafe/dbName1'
-  ]);
-  $db_name = $db_name["SecretString"];
-  $currency = $secrets_client->getSecretValue([
-    'SecretId' => '/cafe/currency1'
-  ]);
-  $currency = $currency["SecretString"];  
-  $timezone = $secrets_client->getSecretValue([
-    'SecretId' => '/cafe/timeZone1'
-  ]);
-  $timezone = $timezone["SecretString"];  
-  $showServerInfo = $secrets_client->getSecretValue([
-    'SecretId' => '/cafe/showServerInfo1'
-  ]);
-  $showServerInfo = $showServerInfo["SecretString"];  
 
-}
-catch (Exception $e) {
-  $db_url = '';
-  $db_name = '';
-  $db_user = '';
-  $db_password = '';
-  $showServerInfo = '';
-  $timeZone = '';
-  $currency = '';
-}
 #error_log('Settings are: ' . $ep. " / " . $db_name . " / " . $db_user . " / " . $db_password);
 ?>
