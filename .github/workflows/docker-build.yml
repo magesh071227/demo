@@ -3,10 +3,10 @@ name: Build Docker image and push to ECR
 on:
   push:
     branches:
-      - main  # Trigger the build on changes to the main branch
+      - ECS  # Trigger the build on changes to the main branch
   pull_request:
     branches:
-      - main  # Trigger on pull requests to the main branch
+      - ECS  # Trigger on pull requests to the main branch
 
 jobs:
   build:
