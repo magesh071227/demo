@@ -3,32 +3,40 @@ name: Build Docker image and push to ECR
 on:
   push:
     branches:
-      - ECS  # Trigger the build on changes to the main branch
+      - ECS  # Replace with the branch you're using
   pull_request:
     branches:
-      - ECS  # Trigger on pull requests to the main branch
+      - ECS
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Use the latest Ubuntu environment to run the job
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2  # Checkout the code from the GitHub repository
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1  # Set up Docker Buildx for advanced building features
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
 
-    - name: Log in to Amazon ECR
-      uses: aws-actions/amazon-ecr-login@v1  # Logs in to your AWS ECR registry
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
 
-    - name: Build and push Docker image to ECR
-      run: |
-        IMAGE_TAG=$(echo $GITHUB_SHA | cut -c1-7)  # Tag the image with the first 7 characters of the commit hash
-        REPOSITORY_URI=842675985346.dkr.ecr.us-east-2.amazonaws.com/demo  # ECR repository URI for your project
-        docker build -t $REPOSITORY_URI:$IMAGE_TAG .  # Build the Docker image
-        docker push $REPOSITORY_URI:$IMAGE_TAG  # Push the Docker image to ECR
+      - name: Log in to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v1
 
-    - name: Output Image Tag
-      run: echo "Image pushed: $REPOSITORY_URI:$IMAGE_TAG"  # Output the pushed image tag
+      - name: Build and push Docker image to ECR
+        env:
+          ECR_REGISTRY: 842675985346.dkr.ecr.us-east-2.amazonaws.com
+          ECR_REPOSITORY: demo
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
+      - name: Output Image URI
+        run: echo "Image pushed to: 842675985346.dkr.ecr.us-east-2.amazonaws.com/demo:${{ github.sha }}"
