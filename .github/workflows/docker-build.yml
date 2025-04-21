@@ -3,7 +3,7 @@ name: Build Docker image and push to ECR
 on:
   push:
     branches:
-      - ECS  # Update this to 'main' if you're using main branch
+      - ECS  # or main, depending on your setup
   pull_request:
     branches:
       - ECS
@@ -35,7 +35,7 @@ jobs:
           ECR_REPOSITORY: demo
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . --no-cache --progress=plain
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
       - name: Output Image URI
