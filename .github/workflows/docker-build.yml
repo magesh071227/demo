@@ -3,7 +3,7 @@ name: Build Docker image and push to ECR
 on:
   push:
     branches:
-      - ECS  # or main, depending on your setup
+      - ECS  # Update this to 'main' if you're using main branch
   pull_request:
     branches:
       - ECS
@@ -39,4 +39,6 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
       - name: Output Image URI
-        run: echo Image pushed to: 842675985346.dkr.ecr.us-east-2.amazonaws.com/demo:${{ github.sha }}
+        run: |
+          IMAGE_TAG=${GITHUB_SHA}
+          echo "Image pushed to: 842675985346.dkr.ecr.us-east-2.amazonaws.com/demo:$IMAGE_TAG"
