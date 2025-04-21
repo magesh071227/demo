@@ -3,7 +3,7 @@ name: Build Docker image and push to ECR
 on:
   push:
     branches:
-      - ECS  # Replace with the branch you're using
+      - ECS  # or main, depending on your setup
   pull_request:
     branches:
       - ECS
