@@ -1,0 +1,34 @@
+name: Build Docker image and push to ECR
+
+on:
+  push:
+    branches:
+      - main  # Trigger the build on changes to the main branch
+  pull_request:
+    branches:
+      - main  # Trigger on pull requests to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu environment to run the job
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  # Checkout the code from the GitHub repository
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1  # Set up Docker Buildx for advanced building features
+
+    - name: Log in to Amazon ECR
+      uses: aws-actions/amazon-ecr-login@v1  # Logs in to your AWS ECR registry
+
+    - name: Build and push Docker image to ECR
+      run: |
+        IMAGE_TAG=$(echo $GITHUB_SHA | cut -c1-7)  # Tag the image with the first 7 characters of the commit hash
+        REPOSITORY_URI=842675985346.dkr.ecr.us-east-2.amazonaws.com/demo  # ECR repository URI for your project
+        docker build -t $REPOSITORY_URI:$IMAGE_TAG .  # Build the Docker image
+        docker push $REPOSITORY_URI:$IMAGE_TAG  # Push the Docker image to ECR
+
+    - name: Output Image Tag
+      run: echo "Image pushed: $REPOSITORY_URI:$IMAGE_TAG"  # Output the pushed image tag
+
