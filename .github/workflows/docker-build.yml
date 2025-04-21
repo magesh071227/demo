@@ -39,4 +39,4 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
       - name: Output Image URI
-        run: echo "Image pushed to: 842675985346.dkr.ecr.us-east-2.amazonaws.com/demo:${{ github.sha }}"
+        run: echo Image pushed to: 842675985346.dkr.ecr.us-east-2.amazonaws.com/demo:${{ github.sha }}
