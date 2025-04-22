@@ -3,10 +3,10 @@ name: Build Docker image and push to ECR
 on:
   push:
     branches:
-      - ECS  # or main, depending on your setup
+      - ECS1  # or main, depending on your setup
   pull_request:
     branches:
-      - ECS
+      - ECS1
 
 jobs:
   build:
@@ -32,7 +32,7 @@ jobs:
       - name: Build and push Docker image to ECR
         env:
           ECR_REGISTRY: 842675985346.dkr.ecr.us-east-2.amazonaws.com
-          ECR_REPOSITORY: demo
+          ECR_REPOSITORY: neogym
           IMAGE_TAG: ${{ github.sha }}
         run: |
           # Build the image with both 'latest' and commit SHA tags
