@@ -44,7 +44,7 @@
 			<table>
 				<tr>
 					<td bgcolor="aquamarine">
-						<div class="cursiveText">Magesh260601 bakes a rich variety of cookies. Try them all!</div>
+						<div class="cursiveText">Magesh2606 bakes a rich variety of cookies. Try them all!</div>
 						<table>
 							<tr>
 								<td><img src="images/Cookies.jpg" height=auto width="300"></td>
