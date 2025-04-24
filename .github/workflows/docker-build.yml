@@ -1,0 +1,51 @@
+name: Build Docker image and push to ECR
+
+on:
+  push:
+    branches:
+      - ECS2  # or main, depending on your setup
+  pull_request:
+    branches:
+      - ECS2
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+
+      - name: Log in to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Build and push Docker image to ECR
+        env:
+          ECR_REGISTRY: 842675985346.dkr.ecr.us-east-2.amazonaws.com
+          ECR_REPOSITORY: neogym
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          # Build the image with both 'latest' and commit SHA tags
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
+                       -t $ECR_REGISTRY/$ECR_REPOSITORY:latest . \
+                       --no-cache --progress=plain
+
+          # Push both tags
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+
+      - name: Output Image URIs
+        run: |
+          echo "Image pushed to:"
+          echo "  - 842675985346.dkr.ecr.us-east-2.amazonaws.com/demo:latest"
+          echo "  - 842675985346.dkr.ecr.us-east-2.amazonaws.com/demo:${GITHUB_SHA}"
